@@ -5,10 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BOZP – Bezpečnosť na prvom mieste</title>
   <meta name="description" content="Profesionálny technik BOZP – posúdenie rizík, školenia, audity a príprava na kontrolu." />
-  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Tvoje globálne štýly (verzia kvôli cache) -->
+  <link rel="stylesheet" href="styles.css?v=9" />
+
+  <!-- HERO: vynútenie fotky z vizuálu (img/hero-visual.jpg) -->
+  <style>
+    .hero-art{
+      position:relative; margin:0; border-radius:22px; overflow:hidden;
+      min-height: clamp(380px, 48vh, 620px);
+      outline: 1px solid rgba(255,255,255,.07);
+      box-shadow: 0 24px 60px rgba(0,0,0,.45);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.75)),
+        url("img/hero-visual.jpg?v=1") 62% center / cover no-repeat !important;
+    }
+    /* ak by niekde ostal starý <img> alebo overlay, skryjeme ho */
+    .hero-art img, .hero-art::after, .hero-media { display:none !important; }
+    /* rozloženie hero – istota, že je text vľavo a fotka vpravo */
+    .hero-grid{ display:grid !important; grid-template-columns: 1.05fr .95fr !important; gap:2rem; align-items:center; min-height: clamp(640px, 86vh, 900px); }
+    @media (max-width: 980px){ .hero-grid{ grid-template-columns: 1fr !important; } .hero-art{ min-height:52vh; } }
+  </style>
 </head>
 <body>
-  <!-- progress bar -->
+  <!-- priebeh scrollu -->
   <div class="progress" aria-hidden="true"></div>
 
   <header class="site-header" id="site-header">
@@ -38,30 +58,25 @@
   </header>
 
   <main>
-    <!-- HERO (text vľavo, veľká fotka vpravo) -->
-  <section class="hero" id="home" aria-label="Hlavný banner">
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <h1>Bezpečnosť na prvom mieste</h1>
-      <p>Školenia BOZP, posúdenie rizík a audity – prehľadne, rýchlo a bez pokút.</p>
-      <div class="hero-cta">
-        <a class="btn" href="#contact">Kontaktujte ma</a>
-        <a class="link" href="#services">Pozrieť služby</a>
+    <!-- HERO (text vľavo, tvoja fotka vpravo) -->
+    <section class="hero" id="home" aria-label="Hlavný banner">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1>Bezpečnosť na prvom mieste</h1>
+          <p>Školenia BOZP, posúdenie rizík a audity – prehľadne, rýchlo a bez pokút.</p>
+          <div class="hero-cta">
+            <a class="btn" href="#contact">Kontaktujte ma</a>
+            <a class="link" href="#services">Pozrieť služby</a>
+          </div>
+        </div>
+
+        <!-- Fotka z vizuálu (lokálne: img/hero-visual.jpg) -->
+        <figure class="hero-art" aria-hidden="true"></figure>
       </div>
-    </div>
 
-    <!-- presne tvoja vizuálová fotka, lokálne -->
-    <figure class="hero-art" aria-hidden="true">
-      <img
-        src="img/hero-visual.jpg"
-        alt="Pracovníci v ochranných prilbách na stavbe v noci"
-        loading="eager" decoding="async" />
-    </figure>
-  </div>
-
-  <div class="hazard-tape" aria-hidden="true"></div>
-</section>
-
+      <!-- dekoratívna páska (ak ju máš v CSS) -->
+      <div class="hazard-tape" aria-hidden="true"></div>
+    </section>
 
     <!-- SLUŽBY -->
     <section class="section services" id="services">
