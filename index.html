@@ -5,76 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BOZP – Bezpečnosť na prvom mieste</title>
   <meta name="description" content="Profesionálny technik BOZP – posúdenie rizík, školenia, audity a príprava na kontrolu." />
-
-  <!-- globálne štýly (verzia kvôli cache) -->
-  <link rel="stylesheet" href="styles.css?v=12" />
-
-  <!-- HERO OVERLAY FULL-WIDTH: domov.png ako pozadie cez celú sekciu (aj za textom) -->
-  <style>
-    /* skryj pravý „obrázkový“ stĺpec, už ho netreba */
-    .hero-art{ display:none !important; }
-
-    /* full-bleed fotka za textom */
-    .hero{
-      position: relative;
-      background: url("domov.png?v=2") center center / cover no-repeat !important;
-      /* minimálna výška ako na vizuáli */
-      min-height: clamp(640px, 86vh, 900px);
-      overflow: hidden;
-    }
-    /* stmavenie pre lepší kontrast textu (jemný prechod) */
-    .hero::after{
-      content:"";
-      position:absolute; inset:0;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,.60) 100%),
-        linear-gradient(90deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.10) 45%, rgba(0,0,0,.00) 70%);
-      pointer-events:none;
-      z-index:0;
-    }
-
-    /* rozloženie: text vľavo, fotka je pozadie – grid 1 stĺpec */
-    .hero-grid{
-      display:grid !important;
-      grid-template-columns: 1fr !important;
-      align-items:center;
-      min-height: inherit;
-      position: relative;
-      z-index: 1; /* nad overlayom */
-    }
-
-    /* textový blok nech je vľavo, s max šírkou */
-    .hero-copy{
-      max-width: 760px;
-      padding: 6vh 0;
-    }
-    .hero-copy h1{
-      font-size: clamp(2.6rem, 6.2vw, 4.8rem);
-      line-height: 1.05;
-      margin: 0 0 .6rem;
-    }
-    .hero-copy p{
-      font-size: clamp(1rem, 2.2vw, 1.25rem);
-      color: #bac0cf;
-      margin: 0 0 1.1rem;
-      max-width: 56ch;
-    }
-    .hero-cta{ display:flex; gap:.8rem; flex-wrap:wrap; }
-
-    /* na menších šírkach menší padding nech je hero kompaktnejší */
-    @media (max-width: 980px){
-      .hero{ min-height: 72vh; }
-      .hero-copy{ padding: 5vh 0; }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css?v=13" />
 </head>
 <body>
-  <!-- priebeh scrollu -->
+  <!-- scroll progress -->
   <div class="progress" aria-hidden="true"></div>
 
-  <header class="site-header" id="site-header">
-    <div class="container nav">
-      <a class="logo" href="#">
+  <!-- HERO PANEL (fotka za textom cez celú plochu) -->
+  <header class="hero">
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <!-- NAV v rámci hero, ako na vizuáli -->
+    <div class="nav container">
+      <a href="#" class="logo">
         <span class="logo-mark" aria-hidden="true"></span>
         <span>BOZP</span>
       </a>
@@ -87,35 +30,29 @@
         <ul id="menu" class="menu">
           <li><a href="#services">Služby</a></li>
           <li><a href="#about">O mne</a></li>
-          <li><a href="#testimonials">Referencie</a></li>
           <li><a href="#contact">Kontakt</a></li>
         </ul>
       </nav>
 
-      <div class="nav-right">
+      <div class="nav-cta">
         <a href="#contact" class="btn btn--pill">Kontaktujte ma</a>
       </div>
     </div>
+
+    <!-- HERO TEXT vľavo, fotka je pozadie -->
+    <div class="container hero-content">
+      <h1>Bezpečnosť na prvom mieste</h1>
+      <p>Školenia BOZP, posúdenie rizík a audity – prehľadne, rýchlo a bez pokút.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#contact">Kontaktujte ma</a>
+      </div>
+    </div>
+
+    <!-- „páska“ pri spodnom okraji, ako vo vizuáli -->
+    <div class="hazard" aria-hidden="true"></div>
   </header>
 
   <main>
-    <!-- HERO (full-width domov.png aj za textom) -->
-    <section class="hero" id="home" aria-label="Hlavný banner">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <h1>Bezpečnosť na prvom mieste</h1>
-          <p>Školenia BOZP, posúdenie rizík a audity – prehľadne, rýchlo a bez pokút.</p>
-          <div class="hero-cta">
-            <a class="btn" href="#contact">Kontaktujte ma</a>
-            <a class="link" href="#services">Pozrieť služby</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- dekoratívna páska (ak ju máš v CSS) -->
-      <div class="hazard-tape" aria-hidden="true"></div>
-    </section>
-
     <!-- SLUŽBY -->
     <section class="section services" id="services">
       <div class="container">
@@ -125,37 +62,37 @@
             <div class="ico" aria-hidden="true">
               <svg viewBox="0 0 64 64"><path d="M12 36c0-13 7-22 20-22s20 9 20 22h6a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h6zM10 48h44v-6H10v6zM22 36c0-9 4-14 10-14s10 5 10 14H22z"/></svg>
             </div>
-            <h3>Posúdenie rizík</h3>
-            <p>Identifikácia nebezpečenstiev, hodnotenie rizík a návrh účinných opatrení.</p>
+            <h3>Školenie BOZP</h3>
+            <p>Zrozumiteľné a praktické školenia pre vedúcich aj nových zamestnancov.</p>
           </article>
 
           <article class="card">
             <div class="ico" aria-hidden="true">
               <svg viewBox="0 0 64 64"><path d="M8 54h48l-4 6H12l-4-6zm10-6h28l-4-10H22l-4 10zm6-16h16l-5-14h-6l-5 14z"/></svg>
             </div>
-            <h3>Školenia BOZP</h3>
-            <p>Povinné aj nadstavbové školenia – zrozumiteľne a prakticky pre všetky úrovne.</p>
+            <h3>Audity</h3>
+            <p>Interné audity, dokumentácia a príprava na kontrolu inšpekcie práce.</p>
           </article>
 
           <article class="card">
             <div class="ico" aria-hidden="true">
               <svg viewBox="0 0 64 64"><path d="M32 4l22 8v16c0 14-9 26-22 32C19 54 10 42 10 28V12l22-8zM20 20v8c0 9 5 17 12 22 7-5 12-13 12-22v-8l-12-4-12 4z"/></svg>
             </div>
-            <h3>Audity & príprava</h3>
-            <p>Interné audity, dokumentácia a príprava na kontrolu inšpekcie práce.</p>
+            <h3>Posúdenie rizík</h3>
+            <p>Identifikácia nebezpečenstiev, vyhodnotenie rizík a návrh účinných opatrení.</p>
           </article>
         </div>
       </div>
     </section>
 
     <!-- GALÉRIA + TESTIMONIAL -->
-    <section class="section media-test" id="testimonials">
+    <section class="section media">
       <div class="container media-grid">
         <div class="thumbs">
-          <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop" alt="Bezpečnostná prilba">
-          <img src="https://images.unsplash.com/photo-1529651737248-dad5e287768e?q=80&w=1200&auto=format&fit=crop" alt="Zápis kontrolného listu">
-          <img src="https://images.unsplash.com/photo-1591453089939-a4039b1b0c38?q=80&w=1200&auto=format&fit=crop" alt="Hasiaci prístroj">
-          <img src="https://images.unsplash.com/photo-1529494099240-7f5ea8b4a4f0?q=80&w=1200&auto=format&fit=crop" alt="Inštruktáž tímu">
+          <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop" alt="Bezpečnostná prilba" />
+          <img src="https://images.unsplash.com/photo-1529651737248-dad5e287768e?q=80&w=1200&auto=format&fit=crop" alt="Kontrolný list" />
+          <img src="https://images.unsplash.com/photo-1591453089939-a4039b1b0c38?q=80&w=1200&auto=format&fit=crop" alt="Hasiaci prístroj" />
+          <img src="https://images.unsplash.com/photo-1529494099240-7f5ea8b4a4f0?q=80&w=1200&auto=format&fit=crop" alt="Inštruktáž tímu" />
         </div>
 
         <aside class="testimonial">
