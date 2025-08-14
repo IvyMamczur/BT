@@ -283,3 +283,9 @@ a{ color:inherit; text-decoration:none; }
 
 /* Helper (reveal classname) */
 .visible{ /* stav po odhalení (konkrétne pre .card a .thumbs img je vyššie) */ }
+/* kadrovanie presne ako na mockupe */
+.hero-art img{
+  object-fit: cover;
+  object-position: 62% center; /* posúva záber viac doprava na pracovníkov */
+}
+
