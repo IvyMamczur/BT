@@ -2,128 +2,148 @@
 <html lang="sk">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BOZP Technik</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BOZP Technik – Bezpečnosť na prvom mieste</title>
+  <meta name="description" content="Profesionálny technik BOZP – posúdenie rizík, školenia, audity a komplexná bezpečnosť práce." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <nav class="nav" id="nav" aria-label="Hlavná navigácia">
-    <div class="logo">BOZP</div>
+  <!-- priebeh scrollu -->
+  <div class="progress" aria-hidden="true"></div>
 
-    <button class="burger" id="burger" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <ul class="menu" id="menu">
-      <li><a href="#services">Služby</a></li>
-      <li><a href="#about">O mne</a></li>
-      <li><a href="#contact">Kontakt</a></li>
-    </ul>
-  </nav>
-
-  <section class="hero" id="home">
-    <!-- obsah hero ako “blok” kvôli lepšiemu vrstveniu -->
-    <div class="hero-content">
-      <div class="badge">
-        <span class="dot"></span>
-        Certifikovaný technik BOZP
-        <span class="sep">•</span>
-        10+ rokov praxe
+  <header id="site-header">
+    <div class="container nav">
+      <div class="logo">
+        <div class="logo-mark" aria-hidden="true"></div>
+        <span>BOZP</span>
       </div>
 
-      <h1>Bezpečnosť na prvom mieste</h1>
-      <p>Profesionálny technik BOZP pre vaše pracovisko</p>
-      <a href="#contact" class="btn">Kontaktujte ma</a>
+      <nav aria-label="Hlavná navigácia">
+        <button class="burger" id="burger" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul id="menu" class="menu">
+          <li><a href="#services">Služby</a></li>
+          <li><a href="#about">O mne</a></li>
+          <li><a href="#testimonials">Referencie</a></li>
+          <li><a href="#contact" class="btn btn--nav">Kontaktujte ma</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <!-- Plávajúce BOZP ikony -->
-    <div class="safety-sky" aria-hidden="true"></div>
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-media" aria-hidden="true"></div>
+      <div class="hazard-tape" aria-hidden="true"></div>
 
-    <!-- Ilustrácia v hero (inline SVG, žiadne externé závislosti) -->
-    <div class="hero-media" aria-hidden="true">
-      <svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" role="presentation">
-        <defs>
-          <linearGradient id="gAccent" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#ff7e00"/>
-            <stop offset="100%" stop-color="#ffb347"/>
-          </linearGradient>
-          <filter id="blurGlow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="28" result="b"/>
-            <feMerge>
-              <feMergeNode in="b"/>
-              <feMergeNode in="SourceGraphic"/>
-            </feMerge>
-          </filter>
-          <pattern id="hazard" patternUnits="userSpaceOnUse" width="28" height="28" patternTransform="rotate(-25)">
-            <rect width="28" height="28" fill="rgba(0,0,0,0.4)"/>
-            <rect x="0" y="0" width="14" height="28" fill="url(#gAccent)" opacity="0.35"/>
-          </pattern>
-        </defs>
+      <div class="container hero-inner">
+        <div class="badge">
+          <span class="dot"></span> Certifikovaný technik BOZP
+          <span class="sep">•</span> 10+ rokov praxe
+        </div>
 
-        <!-- podklad so „hazard“ pásmi -->
-        <g opacity="0.45">
-          <rect x="40" y="200" width="560" height="80" rx="18" fill="url(#hazard)"/>
-        </g>
+        <h1>Bezpečnosť na prvom mieste</h1>
+        <p>Posúdenie rizík, školenia zamestnancov a audity – profesionálne, prehľadne a bez stresu.</p>
 
-        <!-- jemná žiara pod helmou -->
-        <ellipse cx="320" cy="160" rx="180" ry="70" fill="url(#gAccent)" opacity="0.25" filter="url(#blurGlow)"/>
-
-        <!-- helma (prevzatá silueta, zväčšená) -->
-        <g transform="translate(160,60) scale(5.2)">
-          <path d="M12 36c0-13 7-22 20-22s20 9 20 22h6a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h6zM10 48h44v-6H10v6zM22 36c0-9 4-14 10-14s10 5 10 14H22z"
-                fill="url(#gAccent)" opacity="0.95"/>
-        </g>
-      </svg>
-    </div>
-
-    <!-- indikátor posunu -->
-    <div class="scroll-indicator" aria-hidden="true">
-      <div class="mouse"></div>
-      <span>Posuňte sa</span>
-    </div>
-  </section>
-
-  <section class="services" id="services">
-    <h2>Služby</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Posúdenie rizík</h3>
-        <p>Identifikácia a analýza pracovných rizík s návrhom opatrení.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn">Kontaktujte ma</a>
+          <a href="#services" class="link">Pozrieť služby</a>
+        </div>
       </div>
-      <div class="card">
-        <h3>Školenia</h3>
-        <p>Pravidelné školenia zamestnancov v oblasti BOZP.</p>
+
+      <!-- plávajúce BOZP ikony -->
+      <div class="safety-sky" aria-hidden="true"></div>
+
+      <div class="scroll-indicator" aria-hidden="true">
+        <div class="mouse"></div>
+        <span>Posuňte sa</span>
       </div>
-      <div class="card">
-        <h3>Audity</h3>
-        <p>Komplexné audity a príprava na kontrolu inšpekcie práce.</p>
+    </section>
+
+    <!-- SLUŽBY -->
+    <section class="services section" id="services">
+      <div class="container">
+        <h2>Služby</h2>
+        <div class="cards">
+          <article class="card">
+            <div class="card-ico" aria-hidden="true">
+              <!-- prilba -->
+              <svg viewBox="0 0 64 64"><path d="M12 36c0-13 7-22 20-22s20 9 20 22h6a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h6zM10 48h44v-6H10v6zM22 36c0-9 4-14 10-14s10 5 10 14H22z"/></svg>
+            </div>
+            <h3>Posúdenie rizík</h3>
+            <p>Identifikácia nebezpečenstiev, hodnotenie rizík a návrh účinných opatrení.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-ico" aria-hidden="true">
+              <!-- kužeľ -->
+              <svg viewBox="0 0 64 64"><path d="M8 54h48l-4 6H12l-4-6zm10-6h28l-4-10H22l-4 10zm6-16h16l-5-14h-6l-5 14z"/></svg>
+            </div>
+            <h3>Školenia BOZP</h3>
+            <p>Povinné i nadstavbové školenia na mieru – pre vedúcich aj nováčikov.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-ico" aria-hidden="true">
+              <!-- štít -->
+              <svg viewBox="0 0 64 64"><path d="M32 4l22 8v16c0 14-9 26-22 32C19 54 10 42 10 28V12l22-8zM20 20v8c0 9 5 17 12 22 7-5 12-13 12-22v-8l-12-4-12 4z"/></svg>
+            </div>
+            <h3>Audity & príprava na kontrolu</h3>
+            <p>Interné audity, dokumentácia a príprava na inšpekciu práce bez zbytočných pokút.</p>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="about" id="about">
-    <h2>O mne</h2>
-    <p>Som certifikovaný technik BOZP s viac ako desaťročnými skúsenosťami.
-       Poskytujem profesionálne služby so zameraním na bezpečnosť a prevenciu.
-    </p>
-  </section>
+    <!-- GALÉRIA -->
+    <section class="gallery section">
+      <div class="container">
+        <h2>Zo spoluprác</h2>
+        <div class="grid">
+          <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop" alt="Bezpečnostná prilba na pracovisku">
+          <img src="https://images.unsplash.com/photo-1529651737248-dad5e287768e?q=80&w=1200&auto=format&fit=crop" alt="Zápis kontrolného listu BOZP">
+          <img src="https://images.unsplash.com/photo-1591453089939-a4039b1b0c38?q=80&w=1200&auto=format&fit=crop" alt="Hasiaci prístroj pripravený na použitie">
+          <img src="https://images.unsplash.com/photo-1529494099240-7f5ea8b4a4f0?q=80&w=1200&auto=format&fit=crop" alt="Tímová bezpečnostná inštruktáž">
+        </div>
+      </div>
+    </section>
 
-  <section class="contact" id="contact">
-    <h2>Kontakt</h2>
-    <form class="contact-form">
-      <input type="text" placeholder="Meno" required />
-      <input type="email" placeholder="Email" required />
-      <textarea placeholder="Správa" required></textarea>
-      <button type="submit" class="btn">Odoslať</button>
-    </form>
-  </section>
+    <!-- REFERENCIE -->
+    <section class="testimonials section" id="testimonials">
+      <div class="container">
+        <h2>Čo hovoria zákazníci</h2>
 
-  <footer>
-    &copy; 2024 BOZP Technik
-  </footer>
+        <div class="tape" tabindex="0" aria-label="Posúvajte do strán pre viac referencií">
+          <figure class="quote">
+            <blockquote>„Príprava na kontrolu prebehla hladko. Oceňujeme jasnú komunikáciu a praktické návody.“</blockquote>
+            <figcaption>— Jana K., HR manažérka</figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote>„Školenie bolo zrozumiteľné, interaktívne a bez zbytočnej teórie. Odporúčam.“</blockquote>
+            <figcaption>— Peter M., vedúci výroby</figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote>„Detailné posúdenie rizík nám ušetrilo čas aj peniaze. Služby využijeme znova.“</blockquote>
+            <figcaption>— Lucia R., prevádzková riaditeľka</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
 
-  <script src="script.js"></script>
-</body>
-</html>
+    <!-- O MNE -->
+    <section class="about section" id="about">
+      <div class="container">
+        <h2>O mne</h2>
+        <p>Som certifikovaný technik BOZP s viac ako desaťročnými skúsenosťami v priemysle a službách.
+           Mojou prioritou je prehľadná dokumentácia, praktické školenia a zníženie rizík vo vašej prevádzke.</p>
+      </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section class="contact section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-copy">
+          <h2>Kontakt</h2>
+          <p>Napíšte mi a pripravím riešenie pre vašu firmu – od rýchle
