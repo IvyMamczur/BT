@@ -3,73 +3,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BOZP Technik – Bezpečnosť na prvom mieste</title>
-  <meta name="description" content="Profesionálny technik BOZP – posúdenie rizík, školenia, audity a komplexná bezpečnosť práce." />
+  <title>BOZP – Bezpečnosť na prvom mieste</title>
+  <meta name="description" content="Profesionálny technik BOZP – posúdenie rizík, školenia, audity a príprava na kontrolu." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- priebeh scrollu -->
+  <!-- progress bar -->
   <div class="progress" aria-hidden="true"></div>
 
-  <header id="site-header">
+  <header class="site-header" id="site-header">
     <div class="container nav">
-      <div class="logo">
-        <div class="logo-mark" aria-hidden="true"></div>
+      <a class="logo" href="#">
+        <span class="logo-mark" aria-hidden="true"></span>
         <span>BOZP</span>
-      </div>
+      </a>
+
+      <button id="burger" class="burger" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
 
       <nav aria-label="Hlavná navigácia">
-        <button class="burger" id="burger" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="menu">
-          <span></span><span></span><span></span>
-        </button>
         <ul id="menu" class="menu">
           <li><a href="#services">Služby</a></li>
           <li><a href="#about">O mne</a></li>
           <li><a href="#testimonials">Referencie</a></li>
-          <li><a href="#contact" class="btn btn--nav">Kontaktujte ma</a></li>
+          <li><a href="#contact">Kontakt</a></li>
         </ul>
       </nav>
+
+      <div class="nav-right">
+        <a href="#contact" class="btn btn--pill">Kontaktujte ma</a>
+      </div>
     </div>
   </header>
 
   <main>
-    <!-- HERO -->
-    <section class="hero" id="home">
-      <div class="hero-media" aria-hidden="true"></div>
-      <div class="hazard-tape" aria-hidden="true"></div>
-
-      <div class="container hero-inner">
-        <div class="badge">
-          <span class="dot"></span> Certifikovaný technik BOZP
-          <span class="sep">•</span> 10+ rokov praxe
+    <!-- HERO (text vľavo, veľká fotka vpravo) -->
+    <section class="hero" id="home" aria-label="Hlavný banner">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1>Bezpečnosť na prvom mieste</h1>
+          <p>Školenia BOZP, posúdenie rizík a audity – prehľadne, rýchlo a bez pokút.</p>
+          <div class="hero-cta">
+            <a class="btn" href="#contact">Kontaktujte ma</a>
+            <a class="link" href="#services">Pozrieť služby</a>
+          </div>
         </div>
 
-        <h1>Bezpečnosť na prvom mieste</h1>
-        <p>Posúdenie rizík, školenia zamestnancov a audity – profesionálne, prehľadne a bez stresu.</p>
-
-        <div class="hero-cta">
-          <a href="#contact" class="btn">Kontaktujte ma</a>
-          <a href="#services" class="link">Pozrieť služby</a>
-        </div>
+        <!-- FOTO VPRAVO (ako vo vizuáli) -->
+        <figure class="hero-art" aria-hidden="true">
+          <picture>
+            <!-- veľké displeje -->
+            <source srcset="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?q=80&w=1900&auto=format&fit=crop" media="(min-width: 1200px)">
+            <!-- stredné -->
+            <source srcset="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?q=80&w=1400&auto=format&fit=crop" media="(min-width: 800px)">
+            <!-- fallback / mobily -->
+            <img src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?q=80&w=1200&auto=format&fit=crop"
+                 alt="Pracovníci v ochranných prilbách na stavbe"
+                 loading="eager" decoding="async" />
+          </picture>
+        </figure>
       </div>
 
-      <!-- plávajúce BOZP ikony -->
+      <!-- plávajúce ikony (ak používaš script.js s ikonami) -->
       <div class="safety-sky" aria-hidden="true"></div>
 
-      <div class="scroll-indicator" aria-hidden="true">
-        <div class="mouse"></div>
-        <span>Posuňte sa</span>
-      </div>
+      <!-- dekoratívna páska pod hero -->
+      <div class="hazard-tape" aria-hidden="true"></div>
     </section>
 
     <!-- SLUŽBY -->
-    <section class="services section" id="services">
+    <section class="section services" id="services">
       <div class="container">
         <h2>Služby</h2>
         <div class="cards">
           <article class="card">
-            <div class="card-ico" aria-hidden="true">
-              <!-- prilba -->
+            <div class="ico" aria-hidden="true">
               <svg viewBox="0 0 64 64"><path d="M12 36c0-13 7-22 20-22s20 9 20 22h6a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h6zM10 48h44v-6H10v6zM22 36c0-9 4-14 10-14s10 5 10 14H22z"/></svg>
             </div>
             <h3>Posúdenie rizík</h3>
@@ -77,78 +86,61 @@
           </article>
 
           <article class="card">
-            <div class="card-ico" aria-hidden="true">
-              <!-- kužeľ -->
+            <div class="ico" aria-hidden="true">
               <svg viewBox="0 0 64 64"><path d="M8 54h48l-4 6H12l-4-6zm10-6h28l-4-10H22l-4 10zm6-16h16l-5-14h-6l-5 14z"/></svg>
             </div>
             <h3>Školenia BOZP</h3>
-            <p>Povinné i nadstavbové školenia na mieru – pre vedúcich aj nováčikov.</p>
+            <p>Povinné aj nadstavbové školenia – zrozumiteľne a prakticky pre všetky úrovne.</p>
           </article>
 
           <article class="card">
-            <div class="card-ico" aria-hidden="true">
-              <!-- štít -->
+            <div class="ico" aria-hidden="true">
               <svg viewBox="0 0 64 64"><path d="M32 4l22 8v16c0 14-9 26-22 32C19 54 10 42 10 28V12l22-8zM20 20v8c0 9 5 17 12 22 7-5 12-13 12-22v-8l-12-4-12 4z"/></svg>
             </div>
-            <h3>Audity & príprava na kontrolu</h3>
-            <p>Interné audity, dokumentácia a príprava na inšpekciu práce bez zbytočných pokút.</p>
+            <h3>Audity & príprava</h3>
+            <p>Interné audity, dokumentácia a príprava na kontrolu inšpekcie práce.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- GALÉRIA -->
-    <section class="gallery section">
-      <div class="container">
-        <h2>Zo spoluprác</h2>
-        <div class="grid">
-          <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop" alt="Bezpečnostná prilba na pracovisku">
-          <img src="https://images.unsplash.com/photo-1529651737248-dad5e287768e?q=80&w=1200&auto=format&fit=crop" alt="Zápis kontrolného listu BOZP">
-          <img src="https://images.unsplash.com/photo-1591453089939-a4039b1b0c38?q=80&w=1200&auto=format&fit=crop" alt="Hasiaci prístroj pripravený na použitie">
-          <img src="https://images.unsplash.com/photo-1529494099240-7f5ea8b4a4f0?q=80&w=1200&auto=format&fit=crop" alt="Tímová bezpečnostná inštruktáž">
+    <!-- GALÉRIA + TESTIMONIAL -->
+    <section class="section media-test" id="testimonials">
+      <div class="container media-grid">
+        <div class="thumbs">
+          <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop" alt="Bezpečnostná prilba">
+          <img src="https://images.unsplash.com/photo-1529651737248-dad5e287768e?q=80&w=1200&auto=format&fit=crop" alt="Zápis kontrolného listu">
+          <img src="https://images.unsplash.com/photo-1591453089939-a4039b1b0c38?q=80&w=1200&auto=format&fit=crop" alt="Hasiaci prístroj">
+          <img src="https://images.unsplash.com/photo-1529494099240-7f5ea8b4a4f0?q=80&w=1200&auto=format&fit=crop" alt="Inštruktáž tímu">
         </div>
-      </div>
-    </section>
 
-    <!-- REFERENCIE -->
-    <section class="testimonials section" id="testimonials">
-      <div class="container">
-        <h2>Čo hovoria zákazníci</h2>
-
-        <div class="tape" tabindex="0" aria-label="Posúvajte do strán pre viac referencií">
-          <figure class="quote">
-            <blockquote>„Príprava na kontrolu prebehla hladko. Oceňujeme jasnú komunikáciu a praktické návody.“</blockquote>
-            <figcaption>— Jana K., HR manažérka</figcaption>
-          </figure>
-          <figure class="quote">
-            <blockquote>„Školenie bolo zrozumiteľné, interaktívne a bez zbytočnej teórie. Odporúčam.“</blockquote>
-            <figcaption>— Peter M., vedúci výroby</figcaption>
-          </figure>
-          <figure class="quote">
-            <blockquote>„Detailné posúdenie rizík nám ušetrilo čas aj peniaze. Služby využijeme znova.“</blockquote>
-            <figcaption>— Lucia R., prevádzková riaditeľka</figcaption>
-          </figure>
-        </div>
+        <aside class="testimonial">
+          <h2>Čo hovoria zákazníci</h2>
+          <blockquote>
+            „Príprava na kontrolu prebehla hladko. Jasná komunikácia, praktické návody a nulové pokuty.“
+          </blockquote>
+          <p class="cite">— Jana K., HR manažérka</p>
+        </aside>
       </div>
     </section>
 
     <!-- O MNE -->
-    <section class="about section" id="about">
+    <section class="section about" id="about">
       <div class="container">
         <h2>O mne</h2>
-        <p>Som certifikovaný technik BOZP s viac ako desaťročnými skúsenosťami v priemysle a službách.
-           Mojou prioritou je prehľadná dokumentácia, praktické školenia a zníženie rizík vo vašej prevádzke.</p>
+        <p>Som certifikovaný technik BOZP s viac ako desaťročnou praxou. Zameriavam sa na efektívnu prevenciu,
+           zrozumiteľné školenia a dokumentáciu, ktorá prejde každou kontrolou.</p>
       </div>
     </section>
 
     <!-- KONTAKT -->
-    <section class="contact section" id="contact">
+    <section class="section contact" id="contact">
       <div class="container contact-grid">
         <div class="contact-copy">
           <h2>Kontakt</h2>
           <p>Napíšte mi a pripravím riešenie pre vašu firmu – od rýchlej konzultácie po kompletný BOZP servis.</p>
           <ul class="list">
-            <li>✔️ Rýchla odpoveď do 24h</li>
+            <li>✔️ Rýchla odpoveď</li>
             <li>✔️ Transparentná ponuka</li>
             <li>✔️ Seriózny prístup</li>
           </ul>
@@ -157,17 +149,17 @@
         <form class="contact-form" aria-label="Kontaktný formulár">
           <label>
             <span>Meno</span>
-            <input type="text" name="name" placeholder="Vaše meno" required>
+            <input type="text" name="name" placeholder="Vaše meno" required />
           </label>
           <label>
             <span>Email</span>
-            <input type="email" name="email" placeholder="vas@firma.sk" required>
+            <input type="email" name="email" placeholder="vas@firma.sk" required />
           </label>
           <label class="full">
             <span>Správa</span>
             <textarea name="message" rows="4" placeholder="Ako vám môžem pomôcť?" required></textarea>
           </label>
-          <button type="submit" class="btn btn--full">Odoslať</button>
+          <button class="btn btn--full" type="submit">Odoslať</button>
         </form>
       </div>
     </section>
@@ -175,10 +167,10 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <div class="logo">
-        <div class="logo-mark" aria-hidden="true"></div>
+      <a class="logo" href="#">
+        <span class="logo-mark" aria-hidden="true"></span>
         <span>BOZP</span>
-      </div>
+      </a>
       <p>© <span id="year"></span> BOZP Technik. Všetky práva vyhradené.</p>
     </div>
   </footer>
