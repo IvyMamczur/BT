@@ -207,3 +207,57 @@ a{ color:inherit; text-decoration:none; }
 @keyframes scroll{ 0%{ opacity:.25; transform:translate(-50%,0) } 60%{ opacity:1; transform:translate(-50%,6px) } 100%{ opacity:.25; transform:translate(-50%,0) } }
 
 .visible{ /* len háčik, štýl sa mení na elementoch vyššie */ }
+/* --- HERO layout (vizuál: text vľavo, veľká fotka vpravo) --- */
+.hero{
+  position:relative; overflow:hidden;
+  background: radial-gradient(900px 600px at 80% 20%, #1b202b 0%, #0f131a 50%, #0b0e14 100%);
+}
+.hero::before{
+  content:""; position:absolute; inset:-25%;
+  background: conic-gradient(from 180deg at 50% 50%, rgba(255,126,0,.24), transparent 20%, rgba(125,211,252,.18), transparent 60%, rgba(255,126,0,.24));
+  filter: blur(70px); opacity:.22; animation: swirl 28s linear infinite;
+}
+.hero-grid{
+  display:grid; grid-template-columns: 1.05fr .95fr; gap:2rem;
+  min-height: clamp(640px, 86vh, 900px); align-items:center;
+}
+.hero-copy h1{
+  font-size: clamp(2.4rem, 6vw, 4.8rem);
+  line-height:1.05; margin:0 0 .6rem;
+}
+.hero-copy p{
+  color:#bac0cf; margin:0 0 1.1rem;
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+}
+.hero-cta{ display:flex; gap:.8rem; flex-wrap:wrap; }
+
+/* FOTO vpravo ako komponent (nie iba background) */
+.hero-art{
+  position:relative; margin:0; border-radius:22px; overflow:hidden;
+  outline:1px solid rgba(255,255,255,.07); box-shadow: 0 24px 60px rgba(0,0,0,.45);
+  min-height: clamp(380px, 48vh, 620px); /* aby vždy pekne vypĺňalo */
+}
+.hero-art img{
+  width:100%; height:100%; object-fit:cover; display:block;
+  transform: scale(1.03); /* ľahký „crop“ efekt */
+}
+.hero-art::after{
+  /* stmavenie pre lepší kontrast, ako na mockupe */
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.75));
+}
+
+/* dekor páska pod hero */
+.hazard-tape{
+  position:absolute; left:-10vw; right:-10vw; bottom: clamp(18px, 5vh, 40px);
+  height:18px; transform: rotate(-1.5deg);
+  background-image: repeating-linear-gradient(-45deg,#000 0 16px, var(--accent) 16px 32px);
+  opacity:.28; filter: drop-shadow(0 4px 18px rgba(0,0,0,.35));
+}
+
+/* Responzivita – na mobiloch fotka pod textom */
+@media (max-width: 980px){
+  .hero-grid{ grid-template-columns: 1fr; }
+  .hero-art{ min-height: 52vh; }
+}
+
