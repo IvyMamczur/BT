@@ -1,19 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Rok vo footeri (ak máš #year)
+  // rok vo footeri (ak máš #year)
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
-  // Burger menu — spoľahlivo na mobile
-  const header = document.querySelector('header.hero'); // meníme class na hero
+  // === Burger menu (mobil) ===
+  const header = document.querySelector('header.hero'); // menu viaže 'open' na <header class="hero">
   const burger = document.getElementById('burger');
   const menu = document.getElementById('menu');
-
-  if (burger && header && menu) {
+  if (header && burger && menu) {
     burger.addEventListener('click', () => {
       const open = header.classList.toggle('open');
       burger.setAttribute('aria-expanded', String(open));
     });
-    // po kliku na položku menu ho zatvoriť
+    // po kliku na položku menu ho zatvoríme
     menu.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
         header.classList.remove('open');
@@ -22,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Scroll progress
+  // progress bar
   const bar = document.querySelector('.progress');
   const updateBar = () => {
     const h = document.documentElement;
@@ -33,9 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
   updateBar();
   document.addEventListener('scroll', updateBar, { passive: true });
 
-  // Reveal animácia kariet a fotiek
+  // odhalenie kariet/obrázkov
   const io = new IntersectionObserver((entries) => {
-    entries.forEach((e) => {
+    entries.forEach(e => {
       if (e.isIntersecting) {
         e.target.classList.add('visible');
         io.unobserve(e.target);
