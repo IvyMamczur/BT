@@ -198,3 +198,51 @@ a{text-decoration:none;color:inherit}
   .btn{ padding:.75rem 1.1rem; }
   .hero h1{ font-size: clamp(2rem, 9vw, 2.4rem); }
 }
+/* === MOBILE ONLY FIXES (desktop ostáva rovnaký) === */
+@media (max-width: 900px){
+  /* hero: full-bleed, text pekne na stred */
+  .hero{
+    width:100vw !important;
+    margin:0 !important;
+    border-radius:0 !important;
+    min-height:72vh !important;
+    background-position:62% center !important; /* prípadne zmeň na center center */
+  }
+  .hero-content{
+    padding: 18vw 6vw 16vw !important;
+    text-align:center !important;
+    margin: 0 auto !important;
+  }
+  .hero-cta{ justify-content:center !important; }
+
+  /* navigácia a hamburger */
+  .burger{ display:block !important; z-index:1002; }
+  .hero .nav{ padding: 1rem 6vw !important; }
+
+  /* menu: spoľahlivo nad všetkým, fullscreen panel pod nav */
+  .menu{
+    position: fixed !important;
+    top: 72px; left: 0; right: 0;
+    flex-direction: column !important;
+    gap: .6rem;
+    background: rgba(13,16,22,.98);
+    border-top: 1px solid var(--border);
+    padding: 1rem 6vw 2rem;
+    opacity: 0; transform: translateY(-8px);
+    pointer-events: none;
+    transition: var(--transition);
+    z-index: 1001; /* nad overlayom v hero */
+  }
+  header.open .menu{ opacity:1; transform:none; pointer-events:auto; }
+
+  /* animácia ikon hamburgera */
+  header.open .burger span:nth-child(1){ transform: translateY(8px) rotate(45deg) }
+  header.open .burger span:nth-child(2){ opacity:0 }
+  header.open .burger span:nth-child(3){ transform: translateY(-8px) rotate(-45deg) }
+}
+
+/* drobnosti pre extra úzke mobily */
+@media (max-width: 380px){
+  .hero-content{ padding-top: 22vw !important; }
+  .btn{ padding:.75rem 1.1rem; }
+}
