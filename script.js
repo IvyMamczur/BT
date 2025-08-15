@@ -1,18 +1,24 @@
-// rok vo footeri, burger, progress, reveal
 document.addEventListener('DOMContentLoaded', () => {
-  // Rok
+  // Rok vo footeri (ak máš #year)
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
-  // Burger
-  const header = document.getElementById('site-header');
+  // Burger menu — spoľahlivo na mobile
+  const header = document.querySelector('header.hero'); // meníme class na hero
   const burger = document.getElementById('burger');
   const menu = document.getElementById('menu');
-  if (burger && header) {
+
+  if (burger && header && menu) {
     burger.addEventListener('click', () => {
       const open = header.classList.toggle('open');
       burger.setAttribute('aria-expanded', String(open));
-      if (open && menu) menu.focus({ preventScroll: true });
+    });
+    // po kliku na položku menu ho zatvoriť
+    menu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        header.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      });
     });
   }
 
@@ -27,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateBar();
   document.addEventListener('scroll', updateBar, { passive: true });
 
-  // Reveal animácia (karty, fotky)
+  // Reveal animácia kariet a fotiek
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
       if (e.isIntersecting) {
