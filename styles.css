@@ -153,3 +153,48 @@ a{text-decoration:none;color:inherit}
 
 /* KEYFRAMES placeholder */
 .visible{}
+/* === MOBILE FIXES: full-bleed hero + funkčné menu + centrovanie === */
+
+/* hero cez celú šírku telefónu a centrovaný text */
+@media (max-width: 900px){
+  .hero{
+    width:100vw !important;
+    margin:0 !important;
+    border-radius:0 !important;
+    min-height:72vh !important;
+    background-position: 62% center !important; /* kľudne uprav na center center / 60% center */
+  }
+  .hero-content{
+    padding: 14vw 6vw 16vw !important;
+    text-align:center !important;
+  }
+  .hero-cta{ justify-content:center !important; }
+}
+
+/* mobilné menu nad všetkým a správne rozbalenie */
+@media (max-width: 900px){
+  .burger{ display:block !important; z-index:30; }
+  .menu{
+    position:absolute !important;
+    top:72px; left:4vw; right:4vw;
+    flex-direction:column;
+    background: rgba(15,18,25,.96);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:1rem;
+    box-shadow: var(--shadow);
+    opacity:0; pointer-events:none; transform: translateY(-8px);
+    transition: var(--transition);
+    z-index: 40; /* aby nebolo pod overlayom */
+  }
+  header.open .menu{ opacity:1; pointer-events:auto; transform:none; }
+  header.open .burger span:nth-child(1){ transform: translateY(8px) rotate(45deg) }
+  header.open .burger span:nth-child(2){ opacity:0 }
+  header.open .burger span:nth-child(3){ transform: translateY(-8px) rotate(-45deg) }
+}
+
+/* drobné dorovnania na veľmi úzkych displejoch */
+@media (max-width: 380px){
+  .btn{ padding:.75rem 1.1rem; }
+  .hero h1{ font-size: clamp(2rem, 9vw, 2.4rem); }
+}
