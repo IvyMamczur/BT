@@ -7,24 +7,65 @@
   <meta name="description" content="Profesionálny technik BOZP – posúdenie rizík, školenia, audity a príprava na kontrolu." />
 
   <!-- globálne štýly (verzia kvôli cache) -->
-  <link rel="stylesheet" href="styles.css?v=11" />
+  <link rel="stylesheet" href="styles.css?v=12" />
 
-  <!-- HERO: vynútenie tvojej fotky domov.png (súbor je vedľa index.html) -->
+  <!-- HERO OVERLAY FULL-WIDTH: domov.png ako pozadie cez celú sekciu (aj za textom) -->
   <style>
-    .hero-art{
-      position:relative; margin:0; border-radius:22px; overflow:hidden;
-      min-height: clamp(380px, 48vh, 620px);
-      outline: 1px solid rgba(255,255,255,.07);
-      box-shadow: 0 24px 60px rgba(0,0,0,.45);
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.75)),
-        url("domov.png?v=1") 62% center / cover no-repeat !important; /* ⬅ tu je tvoja fotka */
+    /* skryj pravý „obrázkový“ stĺpec, už ho netreba */
+    .hero-art{ display:none !important; }
+
+    /* full-bleed fotka za textom */
+    .hero{
+      position: relative;
+      background: url("domov.png?v=2") center center / cover no-repeat !important;
+      /* minimálna výška ako na vizuáli */
+      min-height: clamp(640px, 86vh, 900px);
+      overflow: hidden;
     }
-    /* vypneme staré prekrývania/obrázky, keby niekde ostali */
-    .hero-art img, .hero-art::after, .hero-media { display:none !important; }
-    /* rozloženie hero: text vľavo, fotka vpravo */
-    .hero-grid{ display:grid !important; grid-template-columns: 1.05fr .95fr !important; gap:2rem; align-items:center; min-height: clamp(640px, 86vh, 900px); }
-    @media (max-width: 980px){ .hero-grid{ grid-template-columns: 1fr !important; } .hero-art{ min-height:52vh; } }
+    /* stmavenie pre lepší kontrast textu (jemný prechod) */
+    .hero::after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,.60) 100%),
+        linear-gradient(90deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.10) 45%, rgba(0,0,0,.00) 70%);
+      pointer-events:none;
+      z-index:0;
+    }
+
+    /* rozloženie: text vľavo, fotka je pozadie – grid 1 stĺpec */
+    .hero-grid{
+      display:grid !important;
+      grid-template-columns: 1fr !important;
+      align-items:center;
+      min-height: inherit;
+      position: relative;
+      z-index: 1; /* nad overlayom */
+    }
+
+    /* textový blok nech je vľavo, s max šírkou */
+    .hero-copy{
+      max-width: 760px;
+      padding: 6vh 0;
+    }
+    .hero-copy h1{
+      font-size: clamp(2.6rem, 6.2vw, 4.8rem);
+      line-height: 1.05;
+      margin: 0 0 .6rem;
+    }
+    .hero-copy p{
+      font-size: clamp(1rem, 2.2vw, 1.25rem);
+      color: #bac0cf;
+      margin: 0 0 1.1rem;
+      max-width: 56ch;
+    }
+    .hero-cta{ display:flex; gap:.8rem; flex-wrap:wrap; }
+
+    /* na menších šírkach menší padding nech je hero kompaktnejší */
+    @media (max-width: 980px){
+      .hero{ min-height: 72vh; }
+      .hero-copy{ padding: 5vh 0; }
+    }
   </style>
 </head>
 <body>
@@ -58,7 +99,7 @@
   </header>
 
   <main>
-    <!-- HERO (text vľavo, tvoja fotka vpravo) -->
+    <!-- HERO (full-width domov.png aj za textom) -->
     <section class="hero" id="home" aria-label="Hlavný banner">
       <div class="container hero-grid">
         <div class="hero-copy">
@@ -69,11 +110,9 @@
             <a class="link" href="#services">Pozrieť služby</a>
           </div>
         </div>
-
-        <!-- Fotka domov.png ako pozadie z CSS -->
-        <figure class="hero-art" aria-hidden="true"></figure>
       </div>
 
+      <!-- dekoratívna páska (ak ju máš v CSS) -->
       <div class="hazard-tape" aria-hidden="true"></div>
     </section>
 
@@ -111,4 +150,75 @@
 
     <!-- GALÉRIA + TESTIMONIAL -->
     <section class="section media-test" id="testimonials">
-      <div class="container media
+      <div class="container media-grid">
+        <div class="thumbs">
+          <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop" alt="Bezpečnostná prilba">
+          <img src="https://images.unsplash.com/photo-1529651737248-dad5e287768e?q=80&w=1200&auto=format&fit=crop" alt="Zápis kontrolného listu">
+          <img src="https://images.unsplash.com/photo-1591453089939-a4039b1b0c38?q=80&w=1200&auto=format&fit=crop" alt="Hasiaci prístroj">
+          <img src="https://images.unsplash.com/photo-1529494099240-7f5ea8b4a4f0?q=80&w=1200&auto=format&fit=crop" alt="Inštruktáž tímu">
+        </div>
+
+        <aside class="testimonial">
+          <h2>Čo hovoria zákazníci</h2>
+          <blockquote>
+            „Príprava na kontrolu prebehla hladko. Jasná komunikácia, praktické návody a nulové pokuty.“
+          </blockquote>
+          <p class="cite">— Jana K., HR manažérka</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- O MNE -->
+    <section class="section about" id="about">
+      <div class="container">
+        <h2>O mne</h2>
+        <p>Som certifikovaný technik BOZP s viac ako desaťročnou praxou. Zameriavam sa na efektívnu prevenciu,
+           zrozumiteľné školenia a dokumentáciu, ktorá prejde každou kontrolou.</p>
+      </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section class="section contact" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-copy">
+          <h2>Kontakt</h2>
+          <p>Napíšte mi a pripravím riešenie pre vašu firmu – od rýchlej konzultácie po kompletný BOZP servis.</p>
+          <ul class="list">
+            <li>✔️ Rýchla odpoveď</li>
+            <li>✔️ Transparentná ponuka</li>
+            <li>✔️ Seriózny prístup</li>
+          </ul>
+        </div>
+
+        <form class="contact-form" aria-label="Kontaktný formulár">
+          <label>
+            <span>Meno</span>
+            <input type="text" name="name" placeholder="Vaše meno" required />
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" placeholder="vas@firma.sk" required />
+          </label>
+          <label class="full">
+            <span>Správa</span>
+            <textarea name="message" rows="4" placeholder="Ako vám môžem pomôcť?" required></textarea>
+          </label>
+          <button class="btn btn--full" type="submit">Odoslať</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a class="logo" href="#">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span>BOZP</span>
+      </a>
+      <p>© <span id="year"></span> BOZP Technik. Všetky práva vyhradené.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
