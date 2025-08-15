@@ -163,7 +163,70 @@ a{text-decoration:none;color:inherit}
     border-radius:0 !important;
     min-height:72vh !important;
     background-position: 62% center !important; /* kľudne uprav na center center / 60% center */
+  }/* === DESKTOP: full-bleed hero cez celú šírku s domov.png (revert) === */
+@media (min-width: 901px){
+  .hero{
+    width:100vw !important;
+    margin:0 !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
+
+    /* veľkosť a pozadie ako na vizuáli */
+    min-height: clamp(680px, 86vh, 920px) !important;
+    background: url("domov.png?v=3") 62% center / cover no-repeat !important;
+    position: relative;
+    overflow: hidden;
   }
+  /* stmavenie kvôli čitateľnosti textu (ako na vizuáli) */
+  .hero::after{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background:
+      radial-gradient(900px 550px at 18% 38%, rgba(0,0,0,.55) 0%, rgba(0,0,0,.25) 40%, rgba(0,0,0,.1) 60%, rgba(0,0,0,0) 80%),
+      linear-gradient(180deg, rgba(0,0,0,.12) 0%, rgba(0,0,0,.60) 100%),
+      linear-gradient(90deg, rgba(0,0,0,.65) 0%, rgba(0,0,0,.10) 45%, rgba(0,0,0,0) 70%);
+    z-index:0;
+  }
+  /* obsah v strede stránky – hero je full-bleed, content má max-šírku */
+  .hero .nav,
+  .hero .hero-content{
+    width:min(1200px, 94vw);
+    margin:0 auto;
+    position:relative;
+    z-index:1; /* nad overlayom */
+  }
+}
+
+/* === MOBILE: len fixy (desktop nechávame tak) === */
+@media (max-width: 900px){
+  .hero{
+    width:100vw !important;
+    margin:0 !important;
+    border-radius:0 !important;
+    min-height:72vh !important;
+    background: url("domov.png?v=3") 62% center / cover no-repeat !important;
+  }
+  .hero-content{ padding: 18vw 6vw 16vw !important; text-align:center !important; margin:0 auto !important; }
+  .hero-cta{ justify-content:center !important; }
+
+  /* mobilné menu */
+  .burger{ display:block !important; z-index:1002; }
+  .menu{
+    position: fixed !important;
+    top: 72px; left: 0; right: 0;
+    flex-direction: column !important; gap:.6rem;
+    background: rgba(13,16,22,.98);
+    border-top: 1px solid var(--border);
+    padding: 1rem 6vw 2rem;
+    opacity:0; transform: translateY(-8px);
+    pointer-events:none; transition: var(--transition);
+    z-index:1001;
+  }
+  header.open .menu{ opacity:1; transform:none; pointer-events:auto; }
+  header.open .burger span:nth-child(1){ transform: translateY(8px) rotate(45deg) }
+  header.open .burger span:nth-child(2){ opacity:0 }
+  header.open .burger span:nth-child(3){ transform: translateY(-8px) rotate(-45deg) }
+}
+
   .hero-content{
     padding: 14vw 6vw 16vw !important;
     text-align:center !important;
